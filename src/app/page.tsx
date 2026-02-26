@@ -1,8 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-// Import from standard Next link or define simple anchor logic
-// We'll keep their exact design but add Next.js standard optimizations if needed. But let's keep it mostly original for now as requested.
+import {
+  Grid3x3,
+  Settings2,
+  RefreshCcw,
+  Droplets,
+  Trash2,
+  ChevronsDown,
+  Columns2,
+  Building2,
+  Container,
+  Wrench,
+} from "lucide-react";
 
 const WHATSAPP_BASE = "https://wa.me/5565992334612";
 
@@ -11,61 +21,61 @@ const equipamentos = [
     id: "andaimes",
     nome: "Andaimes e Acessórios",
     descricao: "Modulares, tubulares e fachadeiros. Montagem segura para qualquer altura.",
-    icon: "🏗️",
+    Icon: Grid3x3,
   },
   {
     id: "guinchos",
     nome: "Guinchos e Acessórios",
     descricao: "Capacidade e alcance para içamento de materiais com segurança.",
-    icon: "⚙️",
+    Icon: Settings2,
   },
   {
     id: "betoneiras",
     nome: "Betoneiras",
     descricao: "320L, 400L e 600L. Ideais para pequenas e médias concretagens.",
-    icon: "🔄",
+    Icon: RefreshCcw,
   },
   {
     id: "bombas",
     nome: "Bombas",
     descricao: "Bombas d'água, submersíveis e de rebaixamento de lençol freático.",
-    icon: "💧",
+    Icon: Droplets,
   },
   {
     id: "cacamba",
     nome: "Caçamba",
     descricao: "Para descarte de entulho e resíduos com logística integrada.",
-    icon: "🗂️",
+    Icon: Trash2,
   },
   {
     id: "compactador",
     nome: "Compactador",
     descricao: "Placas vibratórias e sapos compactadores para solo e britas.",
-    icon: "📦",
+    Icon: ChevronsDown,
   },
   {
     id: "escoramento",
     nome: "Escoramento",
     descricao: "Torres e escoras reguláveis para lajes e estruturas em concretagem.",
-    icon: "🔩",
+    Icon: Columns2,
   },
   {
     id: "concretagem",
     nome: "Concretagem",
     descricao: "Vibradores de imersão, réguas vibratórias e acessórios de forma.",
-    icon: "🏛️",
+    Icon: Building2,
   },
   {
     id: "container",
     nome: "Container Condomínio",
     descricao: "Escritórios de obra modulares e guaritas para canteiros.",
-    icon: "🏢",
+    Icon: Container,
   },
   {
     id: "geral",
     nome: "Equipamentos em Geral",
     descricao: "Serra circular, policorte, plataforma elevatória, talhas e muito mais.",
-    icon: "🛠️",
+    Icon: Wrench,
   },
 ];
 
@@ -172,8 +182,7 @@ export default function Home() {
       console.error('Failed to submit raw lead', err);
     }
 
-    const msg = `Olá! Meu nome é ${nome} e gostaria de fazer um orçamento. Meu WhatsApp é ${whatsapp}.`;
-    const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/5565992334612?text=${encodeURIComponent("Olá, quero fazer um orçamento")}`;
     window.location.href = url;
   }
 
@@ -301,6 +310,8 @@ export default function Home() {
           .form-grid { grid-template-columns: 1fr !important; }
           .cta-strip { flex-direction: column !important; align-items: flex-start !important; }
           .section-pad { padding: 60px 32px !important; }
+          .hero-diagonal-bg { display: none !important; }
+          .hero-gold-line { display: none !important; }
         }
         @media (max-width: 480px) {
           .eq-grid { grid-template-columns: 1fr !important; }
@@ -328,40 +339,11 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        {/* Logo no topo */}
-        <div
-          style={{
-            position: "absolute",
-            top: 32,
-            left: 48,
-            zIndex: 10,
-          }}
-        >
-          {/*
-            Para usar a logo real, substitua o bloco abaixo por:
-            <img src="/logo.png" alt="Locadora da Construção" style={{ height: 52, width: "auto" }} />
-          */}
-          <div
-            style={{
-              width: 180,
-              height: 52,
-              background: "#1a1a1a",
-              border: "1px dashed #333",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "11px",
-              color: "#444",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            Logo aqui
-          </div>
-        </div>
+        {/* Logo no topo — substitua por <img src="/logo.png" alt="Locadora da Construção" style={{ height: 52, width: "auto", position: "absolute", top: 32, left: 48, zIndex: 10 }} /> */}
 
         {/* BG diagonal */}
         <div
+          className="hero-diagonal-bg"
           style={{
             position: "absolute",
             top: 0,
@@ -376,6 +358,7 @@ export default function Home() {
 
         {/* Gold line */}
         <div
+          className="hero-gold-line"
           style={{
             position: "absolute",
             left: 48,
@@ -456,7 +439,7 @@ export default function Home() {
           {/* CTA */}
           <div className={`hero-text delay-3 ${isVisible ? "visible" : ""}`}>
             <a
-              href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá, quero fazer um orçamento")}`}
+              href="#contato"
               className="cta-btn"
             >
               Solicitar orçamento agora
@@ -775,7 +758,7 @@ export default function Home() {
             </p>
           </div>
           <a
-            href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá, quero fazer um orçamento")}`}
+            href="#contato"
             className="cta-btn"
             style={{ whiteSpace: "nowrap" }}
           >
@@ -825,7 +808,9 @@ export default function Home() {
           >
             {equipamentos.map((eq) => (
               <div key={eq.id} className="eq-card">
-                <div style={{ fontSize: "28px", marginBottom: "14px" }}>{eq.icon}</div>
+                <div style={{ marginBottom: "14px", color: "#d4a843" }}>
+                  <eq.Icon size={32} strokeWidth={1.5} />
+                </div>
                 <h3 style={{ fontSize: "14px", fontWeight: 700, color: "#f0ece4", marginBottom: "8px", lineHeight: "1.3" }}>
                   {eq.nome}
                 </h3>
@@ -839,7 +824,7 @@ export default function Home() {
               Não encontrou o que precisa? Consulte nosso engenheiro.
             </p>
             <a
-              href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá, quero consultar a disponibilidade de um equipamento")}`}
+              href="#contato"
               className="cta-btn-outline"
             >
               Consultar disponibilidade
@@ -1079,12 +1064,19 @@ export default function Home() {
             >
               Contato
             </h4>
-            <div style={{ fontSize: "14px", color: "#666", lineHeight: "2.1" }}>
-              <div>📍 Av. das Torres, 1001, Bairro CPA III, Cuiabá · MT · CEP 78090-770</div>
-              <div style={{ marginTop: "8px" }}>
+            <div style={{ fontSize: "14px", color: "#666", lineHeight: "1.8" }}>
+              <div>📍 Av. Des. Antônio Quirino de Araújo, 121 - Areão, Cuiabá - MT, 78010-650</div>
+              <div style={{ marginTop: "16px" }}>
+                <div style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#444", marginBottom: "8px" }}>
+                  Horário de Atendimento
+                </div>
+                <div>Seg-sexta: 07:30 às 11:30 e 13:30 às 17:30</div>
+                <div>Sábados: 07:30 às 11:30</div>
+              </div>
+              <div style={{ marginTop: "16px" }}>
                 <a
                   href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá, quero fazer um orçamento")}`}
-                  style={{ color: "#d4a843", textDecoration: "none" }}
+                  style={{ color: "#d4a843", textDecoration: "none", fontWeight: 600 }}
                 >
                   WhatsApp: (65) 99233-4612
                 </a>
