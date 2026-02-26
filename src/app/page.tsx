@@ -395,7 +395,7 @@ export default function Home() {
                 fontWeight: 500,
               }}
             >
-              Cuiabá · MT · 39 anos no setor
+              LOCADORA DA CONSTRUÇÃO
             </span>
           </div>
 
