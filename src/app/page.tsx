@@ -412,11 +412,11 @@ export default function Home() {
               marginBottom: "32px",
             }}
           >
-            EQUIPAMENTOS
+            Equipamentos certos
             <br />
-            <span style={{ color: "#d4a843" }}>COM RESPALDO</span>
+            <span style={{ color: "#d4a843" }}>para cada etapa</span>
             <br />
-            DE ENGENHEIRO
+            da obra
           </h1>
 
           {/* Subheadline */}
@@ -431,9 +431,8 @@ export default function Home() {
               fontWeight: 300,
             }}
           >
-            Locação de equipamentos para engenheiros, arquitetos e mestres de obra
-            que não podem errar na especificação. Nosso engenheiro orienta você
-            antes, durante e depois.
+            Locação com orientação de engenheiro. Você não precisa adivinhar qual
+            equipamento usar — a gente indica o correto antes de você locar.
           </p>
 
           {/* CTA */}
