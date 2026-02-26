@@ -432,7 +432,7 @@ export default function Home() {
             }}
           >
             Locação com orientação de engenheiro. Você não precisa adivinhar qual
-            equipamento usar — a gente indica o correto antes de você locar.
+            equipamento usar, a gente indica o correto antes de você locar.
           </p>
 
           {/* CTA */}
