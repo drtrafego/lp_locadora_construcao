@@ -15,6 +15,7 @@ export default function PhoneInputWithFlag({ value, onChange, required }: PhoneI
   const [countryCode, setCountryCode] = useState<string>("br");
 
   useEffect(() => {
+    // Detecta país do usuário via IP conforme documentação do projeto
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +23,7 @@ export default function PhoneInputWithFlag({ value, onChange, required }: PhoneI
           setCountryCode(data.country_code.toLowerCase());
         }
       })
-      .catch(() => { }); // silently fail, default stays BR
+      .catch((err) => console.error("Erro ao buscar país:", err));
   }, []);
 
   const handleChange = (val: string) => {

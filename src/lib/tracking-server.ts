@@ -112,6 +112,10 @@ export function getClientIp(req: Request): string | null {
     if (xForwardedFor) {
         return xForwardedFor.split(',')[0].trim();
     }
+    const xRealIp = req.headers.get('x-real-ip');
+    if (xRealIp) {
+        return xRealIp.trim();
+    }
     return null;
 }
 
