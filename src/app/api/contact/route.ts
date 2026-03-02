@@ -57,7 +57,7 @@ export async function POST(req: Request) {
                             utm_source, utm_medium, utm_campaign, utm_term, page_path
                         )
                         VALUES (
-                            ${name}, ${email || ''}, ${phone}, 'Novo', 'c184664c-d7f2-4840-a418-a2952406cd13', 'super-admin-personal',
+                            ${name}, ${email || ''}, ${phone}, 'Novo', 'c184664c-d7f2-4840-a418-a2952406cd13', ${process.env.ORGANIZATION_ID || 'super-admin-personal'},
                             ${utm_source || null}, ${utm_medium || null}, ${utm_campaign || null}, ${utm_term || null}, ${page_path || null}
                         )
                         ON CONFLICT (email) DO UPDATE SET
