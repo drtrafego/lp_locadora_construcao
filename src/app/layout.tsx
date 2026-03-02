@@ -48,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Force redeploy - GTM Sync */}
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
